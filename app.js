@@ -21,46 +21,48 @@ function getHumanChoice() {
 
 
 function playGame(numOfRounds) {
+	let humanScore = document.querySelector("#humanScore");
+	let computerScore = document.querySelector("#computerScore");
+	humanScore.textContent = 0;
+	computerScore.textContent = 0;
 
 	function playRound(humanChoice, computerChoice) {
 	if(humanChoice == "rock" && computerChoice == "paper") {
-		computerScore += 1;
+		computerScore.textContent = parseInt(computerScore.textContent) + 1;
 		console.log("paper beats rock, comp + 1")
 	} else if(humanChoice == "rock" && computerChoice == "scissors") {
-		humanScore += 1;
+		humanScore.textContent = parseInt(humanScore.textContent) + 1;
 		console.log("rock beats scissors, human + 1")
 	} else if(humanChoice == "paper" && computerChoice == "rock") {
-		humanScore += 1;
+		humanScore.textContent = parseInt(humanScore.textContent) + 1;
 		console.log("paper beats rock, human + 1")
 	} else if(humanChoice == "paper" && computerChoice == "scissors") {
-		computerScore += 1;
+		computerScore.textContent = parseInt(computerScore.textContent) + 1;
 		console.log("scissors beats paper, comp + 1")
 	} else if(humanChoice == "scissors" && computerChoice == "rock") {
-		computerScore += 1;
+		computerScore.textContent = parseInt(computerScore.textContent) + 1;
 		console.log("rock beats scissors, comp + 1")
 	} else if(humanChoice == "scissors" && computerChoice == "paper") {
-		humanScore += 1;
+		humanScore.textContent = parseInt(humanScore.textContent) + 1;
 		console.log("scissors beats paper, human + 1")
 	} else {
 		console.log("draw");
 	}
 }
 
-	let humanScore = 0;
-	let computerScore = 0;
+
 	for(let i = 0; i < numOfRounds; i++) {
 		let humanSelection = getHumanChoice();
 		let computerChoice = getComputerChoice();
 		playRound(humanSelection, computerChoice);
 	}
-	if(humanScore > computerScore) {
+	if(parseInt(humanScore.textContent) > parseInt(computerScore.textContent)) {
 		console.log("Human Wins!");
-	} else if(humanScore < computerScore) {
+	} else if(parseInt(humanScore.textContent) < parseInt(computerScore.textContent)) {
 		console.log("Computer Wins!");
 	} else {
 		console.log("It's a draw");
 	}
 }
-
 
 playGame(5)
